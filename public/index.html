@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="/front/css/style.css">
+   <title>Log in</title>
+   <script src="/front/js/script.js" defer></script>
+   <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+
+<body>
+   <div class="wrapper">
+      <div class="auth">
+         <div class="auth__container">
+            <div class="auth__login">
+               <p class="auth__title">Log in</p>
+               <input maxlength="20" class="auth__username" type="text" placeholder="Login" name="username"
+                  id="auth__username">
+               <input class="auth__password" type="password" placeholder="Password" name="password">
+               <button class="auth__submit" type="submit">Go!</button>
+
+               <label class="auth__label-state" for="reg-button">Don't have an account?</label>
+               <button class="auth__reg-button" id="reg-button">Register</button>
+
+
+            </div>
+            <span class="auth__error-state">Пользователя с именем выаывыаываываыввыаыв не
+               существует</span>
+         </div>
+      </div>
+   </div>
+</body>
+
+</html>
