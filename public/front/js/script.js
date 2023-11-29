@@ -1,3 +1,4 @@
+
 const submitBtn = document.querySelector(".auth__submit")
 const registerBtn = document.querySelector(".auth__reg-button")
 const authTitle = document.querySelector(".auth__title")
@@ -67,11 +68,17 @@ const login = async () => {
    try {
       const response = await axios.post(`${URL}login`, data)
       const token = response.data.token
-      console.log(token);
+
+      localStorage.setItem('token', token)
+      //await axios.get('./front/users.html', config)
+      window.location.href = './front/users.html'
+      //console.log(config);
+
 
    } catch (error) {
       let errorStr = error.response.data.message
       let errorArr = error.response.data[0]
+      console.log('oops');
       messageError(errorStr || errorArr)
    }
 

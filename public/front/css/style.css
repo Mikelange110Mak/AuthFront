@@ -167,3 +167,45 @@ img {
 .errorState {
   color: red;
 }
+
+.account {
+  margin: 50px auto;
+  padding: 15px 20px;
+  max-width: 500px;
+  max-height: 600px;
+  border: 1px solid #333;
+  border-radius: 12px;
+}
+
+.account__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.account__title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.account__name {
+  margin-bottom: 10px;
+}
+
+.account__role {
+  margin-bottom: 30px;
+}
+
+
+.account__username,
+.account__user-roles {
+  font-weight: 500;
+}
+
+.account__exit {
+  padding: 10px 7px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}

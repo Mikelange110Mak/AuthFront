@@ -4,13 +4,23 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+   <link rel="stylesheet" href="./css/style.css">
+   <script src="./js//users.js" defer></script>
    <title>Page1</title>
 </head>
 
 <body>
-   <h2>Страница зарегестрированных пользователей</h2>
-
-   <button>Выйти</button>
+   <div class="wrapper">
+      <div class="account">
+         <div class="account__body">
+            <div class="account__title">Личный кабинет</div>
+            <div class="account__name">Вы вошли как: <span class="account__username">alex</span></div>
+            <div class="account__role">Роли: <span class="account__user-roles">user</span></div>
+            <button class="account__exit">Выйти из аккаунта</button>
+         </div>
+      </div>
+   </div>
 </body>
 
 </html>
