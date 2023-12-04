@@ -70,9 +70,8 @@ const login = async () => {
       const token = response.data.token
 
       localStorage.setItem('token', token)
-      //await axios.get('./front/users.html', config)
       window.location.href = './front/users.html'
-      //console.log(config);
+
 
 
    } catch (error) {

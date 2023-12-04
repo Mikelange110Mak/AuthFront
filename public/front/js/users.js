@@ -17,6 +17,7 @@ function postUsername(username, roleArr) {
    userRoleSpan.textContent = rolesStr
 }
 
+
 const getData = async () => {
 
    const response = await axios.get(`${URL}content`,
@@ -26,7 +27,12 @@ const getData = async () => {
       }
    );
    let contentData = response.data.contentData
-   postUsername(contentData.user.username, contentData.user.roles)
+
+   if (contentData.user.roles.includes("ADMIN")) window.location.href = './admin.html'
+   else postUsername(contentData.user.username, contentData.user.roles)
+
+   console.log(contentData.user.roles[0]);
+
    console.log(localStorage);
 }
 getData()
