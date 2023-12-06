@@ -255,3 +255,17 @@ tr:nth-child(odd) {
 td.role {
   font-weight: 500;
 }
+
+.users__action-cnt {
+  padding: 5px;
+}
+
+.users__delete-btn {
+  background-color: #be3333;
+  color: aliceblue;
+  cursor: pointer;
+  padding: 9% 17%;
+  font-weight: 500;
+  font-size: 13px;
+  border-radius: 6px;
+}
