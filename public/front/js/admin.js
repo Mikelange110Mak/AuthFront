@@ -11,6 +11,8 @@ async function drawTable(username, role) {
    const cell2 = newRow.insertCell(1);
    const cell3 = newRow.insertCell(2);
 
+
+
    cell1.classList.add('users__username')
    cell2.classList.add('role')
    cell3.classList.add('users__action-cnt')
@@ -25,6 +27,8 @@ async function drawTable(username, role) {
 
       `
    }
+
+
    await deleteUser()
 }
 
@@ -46,13 +50,32 @@ const getUsers = async () => {
 }
 getUsers()
 
-function deleteUser() {
+
+function animationTable(btn) {
+   let parentTR = btn.closest('tr');
+   parentTR.classList.add('check')
+   setTimeout(() => {
+      parentTR.remove()
+   }, 400);
+}
+
+const removeFromDb = async (user) => {
+
+   const response = await axios.delete(`${URL}delete-user`, { data: user })
+   console.log(response);
+}
+
+
+
+async function deleteUser() {
 
    const deleteBtn = document.querySelectorAll('.users__delete-btn')
    deleteBtn.forEach(btn => {
       btn.addEventListener('click', function () {
          let username = this.closest('tr').querySelector('.users__username').textContent;
-         console.log({ username });
+
+         animationTable(btn)
+         removeFromDb({ username })
       })
    })
 

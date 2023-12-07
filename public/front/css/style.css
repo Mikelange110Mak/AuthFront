@@ -230,6 +230,10 @@ table {
   border-collapse: collapse;
 }
 
+tr {
+  transition: all 0.3s ease;
+}
+
 th {
   padding: 3px;
   border-bottom: 1px solid grey;
@@ -268,4 +272,11 @@ td.role {
   font-weight: 500;
   font-size: 13px;
   border-radius: 6px;
+}
+
+.check {
+
+  transform: translateX(-80%);
+  opacity: 0;
+  transition: all 0.3s ease;
 }
