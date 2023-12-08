@@ -10,7 +10,7 @@ async function drawTable(username, role) {
    const cell1 = newRow.insertCell(0);
    const cell2 = newRow.insertCell(1);
    const cell3 = newRow.insertCell(2);
-
+   const cell4 = newRow.insertCell(3);
 
 
    cell1.classList.add('users__username')
@@ -26,10 +26,26 @@ async function drawTable(username, role) {
       <button class="users__delete-btn">Delete</button>
 
       `
+      cell4.innerHTML = `
+      
+      <button class="users__edit-btn">Edit</button>
+
+      `
+
    }
 
 
    await deleteUser()
+
+   /*
+   const editBtn = document.querySelectorAll('.users__edit-btn')
+   editBtn.forEach(btn => {
+      btn.addEventListener('click', () => {
+         changeName(btn)
+      })
+   })
+*/
+
 }
 
 
@@ -81,3 +97,13 @@ async function deleteUser() {
 
 }
 
+
+
+function changeName(parent) {
+
+   let usernameStr = parent.closest('tr').querySelector('.users__username')
+   usernameStr.innerHTML = `
+   
+   `
+   console.log(a);
+}

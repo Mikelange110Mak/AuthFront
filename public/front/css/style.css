@@ -268,7 +268,18 @@ td.role {
   background-color: #be3333;
   color: aliceblue;
   cursor: pointer;
-  padding: 9% 17%;
+  padding: 5px 9px;
+  font-weight: 500;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+.users__edit-btn {
+  background-color: #f5e93c;
+  color: rgb(43, 44, 44);
+  border: 1px solid #33333318;
+  cursor: pointer;
+  padding: 5px 11px;
   font-weight: 500;
   font-size: 13px;
   border-radius: 6px;
@@ -279,4 +290,21 @@ td.role {
   transform: translateX(-80%);
   opacity: 0;
   transition: all 0.3s ease;
+}
+
+.edit-input {
+  background-color: inherit;
+  padding: 3px 2px;
+  outline: none;
+  border: 1px solid #33333327;
+}
+
+.edit-enter,
+.edit-clear {
+  padding: 4px;
+}
+
+.edit-enter {
+  background-color: rgba(0, 95, 24, 0.774);
+  color: #ffffff;
 }
