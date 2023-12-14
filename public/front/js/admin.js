@@ -17,7 +17,7 @@ async function drawTable(username, role) {
    cell2.classList.add('role')
    cell3.classList.add('users__action-cnt')
 
-   cell1.innerHTML = username;
+   cell1.innerHTML = `<span>${username}</span>`;
    cell2.innerHTML = role;
 
    if (!role.includes('ADMIN')) {
@@ -37,16 +37,66 @@ async function drawTable(username, role) {
 
    await deleteUser()
 
-   /*
+
+
+
    const editBtn = document.querySelectorAll('.users__edit-btn')
    editBtn.forEach(btn => {
-      btn.addEventListener('click', () => {
-         changeName(btn)
+      btn.addEventListener('click', (e) => {
+
+         let changeState = false
+         const usernameStr = btn.closest('tr').querySelector('span').textContent
+         let usernameElement = btn.closest('tr').querySelector('.users__username')
+
+         console.log(usernameStr);
+         //if (usernameStr.length <= 20) changeName(usernameElement, usernameStr)
+         //else console.log('no');
+         changeName(usernameElement, usernameStr)
       })
+
+
    })
-*/
+
 
 }
+
+function changeName(parent, data) {
+
+
+
+
+   parent.innerHTML = `
+
+<input class="edit-input" minlength="2" maxlength="20" type="text"
+                           value="${data}">
+                        <button class="edit-enter" type="submit"><i class="fa fa-check"></i></button>
+                        <button class="edit-cancel" type="submit"><i class="fa-solid fa-xmark"></i></button>
+                     
+
+`
+
+
+
+   let editAcceptBtn = document.querySelector('.edit-enter')
+
+
+   editAcceptBtn.addEventListener('click', async () => {
+
+      let inputValue = parent.querySelector('input').value
+      const response = await axios.put(`${URL}edit`, { username: data, newName: inputValue })
+      console.log(response.data);
+
+      parent.innerHTML = `
+      
+      <td class="users__username"><span>${inputValue}</span></td>
+
+      `
+
+   })
+
+}
+
+
 
 
 const getUsers = async () => {
@@ -99,11 +149,3 @@ async function deleteUser() {
 
 
 
-function changeName(parent) {
-
-   let usernameStr = parent.closest('tr').querySelector('.users__username')
-   usernameStr.innerHTML = `
-   
-   `
-   console.log(a);
-}

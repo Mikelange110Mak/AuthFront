@@ -299,12 +299,28 @@ td.role {
   border: 1px solid #33333327;
 }
 
-.edit-enter,
-.edit-clear {
-  padding: 4px;
-}
+
 
 .edit-enter {
-  background-color: rgba(0, 95, 24, 0.774);
-  color: #ffffff;
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.edit-enter i {
+  font-size: 18px;
+}
+
+.edit-cancel {
+  background-color: rgb(150, 18, 18);
+  border: none;
+  color: white;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+
+.edit-cancel i {
+  font-size: 18px;
 }
