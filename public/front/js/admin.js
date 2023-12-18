@@ -39,19 +39,28 @@ async function drawTable(username, role) {
 
 
 
+   //РЕДАКТИРОВАНИЕ ПОЛЬЗОВАТЕЛЯ//
 
+   //Желтые кнопки Edit
    const editBtn = document.querySelectorAll('.users__edit-btn')
    editBtn.forEach(btn => {
+      //Перебор и событие клика для них
       btn.addEventListener('click', (e) => {
 
-         let changeState = false
+         btn.classList.toggle('activeEdit')
+
+         //Спан с текстовым содержимым username
          const usernameStr = btn.closest('tr').querySelector('span').textContent
+         console.log(usernameStr);
+         //Родительский блок в котором по задумке будет не спан, а поле инпута, и кнопка принять и отклонить изменения
          let usernameElement = btn.closest('tr').querySelector('.users__username')
 
-         console.log(usernameStr);
-         //if (usernameStr.length <= 20) changeName(usernameElement, usernameStr)
-         //else console.log('no');
+         //Вызов дальнейшей функции смены имени
          changeName(usernameElement, usernameStr)
+         cancelEditUser(usernameElement, usernameStr)
+
+         //дописать, исправить ошибку на 53 строке
+         if (btn.classList.contains('activeEdit')) console.log('nnoou');
       })
 
 
@@ -61,8 +70,6 @@ async function drawTable(username, role) {
 }
 
 function changeName(parent, data) {
-
-
 
 
    parent.innerHTML = `
@@ -94,10 +101,41 @@ function changeName(parent, data) {
 
    })
 
+
+
+
 }
 
+function cancelEditUser(parent, data) {
 
+   //ОТМЕНА РЕДАКТИРОВАНИЯ//
 
+   //Переменная таблицы (для клика по пустой области и отмены)
+   const usersTable = document.querySelector('.users')
+
+   //Переменная кнопки отмены
+   const cancelEditBtn = document.querySelector('.edit-cancel')
+
+   //Событие клика для пустой области (не по форме) вызывает функцию отмены изменений
+   document.addEventListener('click', (e) => {
+      if (!usersTable.contains(e.target)) cancelEditFn(parent, data)
+   })
+
+   //Событие клика для кнопки отмены вызывает функцию отмены изменений 
+   cancelEditBtn.addEventListener('click', () => {
+      cancelEditFn(parent, data)
+   })
+
+}
+
+//ФУНКЦИЯ ОТМЕНЫ РЕДАКТИРОВАНИЯ
+function cancelEditFn(parent, data) {
+   parent.innerHTML = `
+         
+      <td class="users__username"><span>${data}</span></td>
+
+      `
+}
 
 const getUsers = async () => {
 
@@ -109,7 +147,7 @@ const getUsers = async () => {
    console.log(response.data);
    let usersArr = response.data.adminData.users
 
-   usersArr.forEach(user => {
+   await usersArr.forEach(user => {
       drawTable(user.username, user.roles[0]);
    });
 
