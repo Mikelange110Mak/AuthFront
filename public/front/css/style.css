@@ -324,3 +324,7 @@ td.role {
 .edit-cancel i {
   font-size: 18px;
 }
+
+.btn {
+  padding: 3px;
+}

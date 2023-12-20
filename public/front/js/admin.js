@@ -1,56 +1,35 @@
-const table = document.querySelector('table');
+const table = document.querySelector('.table');
+
+import drawTable from './drawTable.mjs'
 
 
 
 const URL = 'http://localhost:5000/auth/'
 const token = localStorage.getItem('token')
 
-async function drawTable(username, role) {
-   const newRow = table.insertRow();
-   const cell1 = newRow.insertCell(0);
-   const cell2 = newRow.insertCell(1);
-   const cell3 = newRow.insertCell(2);
-   const cell4 = newRow.insertCell(3);
-
-
-   cell1.classList.add('users__username')
-   cell2.classList.add('role')
-   cell3.classList.add('users__action-cnt')
-
-   cell1.innerHTML = `<span>${username}</span>`;
-   cell2.innerHTML = role;
-
-   if (!role.includes('ADMIN')) {
-      cell3.innerHTML = `
-      
-      <button class="users__delete-btn">Delete</button>
-
-      `
-      cell4.innerHTML = `
-      
-      <button class="users__edit-btn">Edit</button>
-
-      `
-
+async function deleteTable(table) {
+   while (table.rows.length > 0) {
+      table.deleteRow(0);
    }
-
-
-   await deleteUser()
+}
 
 
 
+async function editBtnFn() {
    //РЕДАКТИРОВАНИЕ ПОЛЬЗОВАТЕЛЯ//
 
    //Желтые кнопки Edit
    const editBtn = document.querySelectorAll('.users__edit-btn')
    editBtn.forEach(btn => {
+
+      const usernameStr = '' + btn.closest('tr').querySelector('span').textContent
       //Перебор и событие клика для них
       btn.addEventListener('click', (e) => {
 
          btn.classList.toggle('activeEdit')
 
          //Спан с текстовым содержимым username
-         const usernameStr = btn.closest('tr').querySelector('span').textContent
+
          console.log(usernameStr);
          //Родительский блок в котором по задумке будет не спан, а поле инпута, и кнопка принять и отклонить изменения
          let usernameElement = btn.closest('tr').querySelector('.users__username')
@@ -58,6 +37,7 @@ async function drawTable(username, role) {
          //Вызов дальнейшей функции смены имени
          changeName(usernameElement, usernameStr)
          cancelEditUser(usernameElement, usernameStr)
+
 
          //дописать, исправить ошибку на 53 строке
          if (btn.classList.contains('activeEdit')) console.log('nnoou');
@@ -69,9 +49,12 @@ async function drawTable(username, role) {
 
 }
 
-function changeName(parent, data) {
 
+async function changeName(parent, data) {
 
+   parent.closest('tr').classList.add('table-active')
+
+   //Из родительского блока, вместо спана с именем делаю инпут
    parent.innerHTML = `
 
 <input class="edit-input" minlength="2" maxlength="20" type="text"
@@ -82,11 +65,10 @@ function changeName(parent, data) {
 
 `
 
-
-
+   //Переменная кнопки, принять изменения
    let editAcceptBtn = document.querySelector('.edit-enter')
 
-
+   //При применении изменений, в бд меняется значение username, и в parent вместо инпутов возвращается спан, также перерисовыется таблица, функциями deleteTable и getUsers
    editAcceptBtn.addEventListener('click', async () => {
 
       let inputValue = parent.querySelector('input').value
@@ -99,10 +81,10 @@ function changeName(parent, data) {
 
       `
 
+      //Перерисовка таблицы
+      deleteTable(table)
+      getUsers()
    })
-
-
-
 
 }
 
@@ -187,3 +169,4 @@ async function deleteUser() {
 
 
 
+export { editBtnFn, deleteUser }
