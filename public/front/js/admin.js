@@ -13,18 +13,42 @@ async function deleteTable(table) {
    }
 }
 
+function disableButtons() {
+   const editBtn = document.querySelectorAll('.users__edit-btn')
+   const deleteButtons = document.querySelectorAll('.users__delete-btn');
 
+   editBtn.forEach((e) => {
+      e.disabled = true;
+   });
+   deleteButtons.forEach((e) => {
+      e.disabled = true;
+   });
+}
+
+function enableButtons() {
+   const editBtn = document.querySelectorAll('.users__edit-btn')
+   const deleteButtons = document.querySelectorAll('.users__delete-btn');
+
+   editBtn.forEach((e) => {
+      e.disabled = false;
+   });
+   deleteButtons.forEach((e) => {
+      e.disabled = false;
+   });
+}
 
 async function editBtnFn() {
    //РЕДАКТИРОВАНИЕ ПОЛЬЗОВАТЕЛЯ//
-
-   //Желтые кнопки Edit
    const editBtn = document.querySelectorAll('.users__edit-btn')
+
+
    editBtn.forEach(btn => {
 
       const usernameStr = '' + btn.closest('tr').querySelector('span').textContent
       //Перебор и событие клика для них
       btn.addEventListener('click', (e) => {
+
+         disableButtons()
 
          btn.classList.toggle('activeEdit')
 
@@ -57,17 +81,18 @@ async function changeName(parent, data) {
    //Из родительского блока, вместо спана с именем делаю инпут
    parent.innerHTML = `
 
-<input class="edit-input" minlength="2" maxlength="20" type="text"
-                           value="${data}">
-                        <button class="edit-enter" type="submit"><i class="fa fa-check"></i></button>
-                        <button class="edit-cancel" type="submit"><i class="fa-solid fa-xmark"></i></button>
+   <div class="input-group">
+   <input type="text" class="form-control edit-input" minlength="2" maxlength="20" value="${data}">
+   <button class="btn btn-outline-secondary edit-enter" type="button"><i
+         class="fa fa-check"></i></button>
+   <button class="btn btn-outline-secondary edit-cancel" type="button"><i
+         class="fa-solid fa-xmark"></i></button>
+</div>
                      
-
 `
 
    //Переменная кнопки, принять изменения
    let editAcceptBtn = document.querySelector('.edit-enter')
-
    //При применении изменений, в бд меняется значение username, и в parent вместо инпутов возвращается спан, также перерисовыется таблица, функциями deleteTable и getUsers
    editAcceptBtn.addEventListener('click', async () => {
 
@@ -81,6 +106,8 @@ async function changeName(parent, data) {
 
       `
 
+      parent.closest('tr').classList.remove('table-active')
+      enableButtons()
       //Перерисовка таблицы
       deleteTable(table)
       getUsers()
@@ -107,16 +134,17 @@ function cancelEditUser(parent, data) {
    cancelEditBtn.addEventListener('click', () => {
       cancelEditFn(parent, data)
    })
-
 }
 
 //ФУНКЦИЯ ОТМЕНЫ РЕДАКТИРОВАНИЯ
 function cancelEditFn(parent, data) {
+   parent.closest('tr').classList.remove('table-active')
    parent.innerHTML = `
          
       <td class="users__username"><span>${data}</span></td>
 
       `
+   enableButtons()
 }
 
 const getUsers = async () => {

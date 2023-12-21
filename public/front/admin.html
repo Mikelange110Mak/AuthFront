@@ -10,7 +10,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
    <title>Admin Panel</title>
-   <script src="./js/admin.js" type="module" defer></script>
+   <script defer src="./js/admin.js" type="module"></script>
 </head>
 
 <body>
@@ -22,33 +22,10 @@
                <table class="table table-hover">
                   <tbody>
                      <tr class="users__table-title">
-                        <th>Пользователь</th>
-                        <th>Роль</th>
-                        <th colspan="2">Действие</th>
+                        <th class="users__thTitle">Пользователь</th>
+                        <th class="users__thTitle">Роль</th>
+                        <th class="users__thTitle">Действие</th>
                      </tr>
-                     <!--
-
-                        <tr>
-                        <td class="users__username"><input class="edit-input" minlength="2" maxlength="20" type="text"
-                              value="Qwertyrbbr54">
-                           <button class="edit-enter" type="submit"><i class="fa fa-check"></i></button>
-                           <button class="edit-cancel" type="submit"><i class="fa-solid fa-xmark"></i></button>
-                        </td>
-                        <td class="users__userrole">
-                           USER
-                        </td>
-                        <td class="users__action-cnt">
-                           <button class="users__delete-btn">Delete</button>
-                        </td>
-                        <td>
-                           <button class="users__edit-btn">Edit</button>
-                        </td>
-                     </tr>
-                  -->
-
-
-
-
 
                   </tbody>
             </div>
@@ -58,3 +35,39 @@
 </body>
 
 </html>
+
+<!--
+                     <tr>
+                        <td class="users__username">
+
+                           <div class="input-group">
+                              <input type="text" class="form-control" value="Qwertyrbbr5433333333">
+                              <button class="btn btn-outline-secondary edit-enter" type="button"><i
+                                    class="fa fa-check"></i></button>
+                              <button class="btn btn-outline-secondary edit-cancel" type="button"><i
+                                    class="fa-solid fa-xmark"></i></button>
+                           </div>
+                        </td>
+                        <td class="users__userrole">
+                           USER
+                        </td>
+                        <td class="users__action-cnt">
+
+
+                        </td>
+
+                     </tr>
+                     <tr>
+                        <td class="users__username"><span>Check</span></td>
+                        <td class="users__userrole">
+                           USER
+                        </td>
+                        <td class="users__action-cnt">
+                           <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
+                              <button type="button" class="btn btn-danger">Delete</button>
+                              <button type="button" class="btn btn-warning">Edit</button>
+                           </div>
+                        </td>
+
+                     </tr>
+-->

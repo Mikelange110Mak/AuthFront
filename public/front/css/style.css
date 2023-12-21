@@ -309,22 +309,45 @@ td.role {
   cursor: pointer;
 }
 
-.edit-enter i {
-  font-size: 18px;
-}
-
-.edit-cancel {
-  background-color: rgb(150, 18, 18);
-  border: none;
-  color: white;
-  padding: 2px 4px;
-  cursor: pointer;
+.edit-enter i,
+.edit-cancel i {
+  font-size: 14px;
 }
 
 .edit-cancel i {
-  font-size: 18px;
+  color: rgb(228, 17, 17);
 }
 
-.btn {
+.edit-enter i {
+  color: green;
+}
+
+
+
+
+button.btn.btn-outline-secondary {
+  padding: 1px 6px;
+}
+
+button.btn.btn-outline-secondary:hover {
+  background-color: #c8caca;
+}
+
+td.users__username>div>input {
   padding: 3px;
+  font-size: 14px;
+}
+
+td.users__username>div>input:focus {
+  outline: none;
+  box-shadow: 0px 5px 10px 17px rgba(163, 215, 255, 0.2);
+}
+
+
+.btn-outline-secondary {
+  font-size: 3px;
+}
+
+.users__thTitle {
+  text-align: center;
 }
