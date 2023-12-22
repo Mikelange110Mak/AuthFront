@@ -1,12 +1,9 @@
 import { editBtnFn, deleteUser } from "./admin.js";
-const editBtn = document.querySelectorAll('.users__edit-btn')
-const deleteButtons = document.querySelectorAll('.users__delete-btn');
 const drawTable = async (username, role) => {
    const table = document.querySelector('.table');
    const tbody = table.querySelector('tbody');
 
    const newRow = table.insertRow();
-   console.log(newRow);
    const infoCell = newRow.insertCell(0);
    const roleCell = newRow.insertCell(1);
    const actionsCell = newRow.insertCell(2);

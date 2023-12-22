@@ -7,6 +7,14 @@ import drawTable from './drawTable.mjs'
 const URL = 'http://localhost:5000/auth/'
 const token = localStorage.getItem('token')
 
+document.addEventListener('DOMContentLoaded', function () {
+   var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+   var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl);
+   });
+});
+
+
 async function deleteTable(table) {
    while (table.rows.length > 0) {
       table.deleteRow(0);
@@ -41,7 +49,7 @@ async function editBtnFn() {
    //РЕДАКТИРОВАНИЕ ПОЛЬЗОВАТЕЛЯ//
    const editBtn = document.querySelectorAll('.users__edit-btn')
 
-
+   //Перебор желтых кнопочек
    editBtn.forEach(btn => {
 
       const usernameStr = '' + btn.closest('tr').querySelector('span').textContent
@@ -52,19 +60,12 @@ async function editBtnFn() {
 
          btn.classList.toggle('activeEdit')
 
-         //Спан с текстовым содержимым username
-
-         console.log(usernameStr);
          //Родительский блок в котором по задумке будет не спан, а поле инпута, и кнопка принять и отклонить изменения
          let usernameElement = btn.closest('tr').querySelector('.users__username')
 
          //Вызов дальнейшей функции смены имени
          changeName(usernameElement, usernameStr)
          cancelEditUser(usernameElement, usernameStr)
-
-
-         //дописать, исправить ошибку на 53 строке
-         if (btn.classList.contains('activeEdit')) console.log('nnoou');
       })
 
 
@@ -97,20 +98,58 @@ async function changeName(parent, data) {
    editAcceptBtn.addEventListener('click', async () => {
 
       let inputValue = parent.querySelector('input').value
-      const response = await axios.put(`${URL}edit`, { username: data, newName: inputValue })
-      console.log(response.data);
 
-      parent.innerHTML = `
+      try {
+         const response = await axios.put(`${URL}edit`, { username: data, newName: inputValue })
+         console.log(response.data);
+
+         parent.innerHTML = `
       
       <td class="users__username"><span>${inputValue}</span></td>
 
       `
 
-      parent.closest('tr').classList.remove('table-active')
-      enableButtons()
-      //Перерисовка таблицы
-      deleteTable(table)
-      getUsers()
+         parent.closest('tr').classList.remove('table-active')
+         enableButtons()
+         //Перерисовка таблицы
+         deleteTable(table)
+         getUsers()
+      } catch (e) {
+
+         // ОБРАБОТКА ОШИБОК С ИСПОЛЬЗОВАНИЕМ ПОПОВЕРОВ БУСТРАПА
+
+         // Переменная ошибки
+         let errorMsg = e.response.data[0]
+         console.log(errorMsg);
+
+         //Накидываю атрибутов для родителя, чтобы поповер выскочил
+         parent.setAttribute('data-bs-container', 'body')
+         parent.setAttribute('data-bs-toggle', 'popover')
+         parent.setAttribute('data-bs-placement', 'left')
+         parent.setAttribute('data-bs-content', errorMsg)
+
+         // Проверяю существует ли Popover, и если да, сношу его
+         if (parent._popover) {
+            parent._popover.dispose();
+         }
+
+         // Новый экземпляр Popover
+         let popoverInstance = new bootstrap.Popover(parent);
+
+         // Показать его
+         popoverInstance.show();
+
+         // Но показать на 1 секунду
+         setTimeout(() => {
+            popoverInstance.hide();
+         }, 1000);
+
+         // Сохраняю экземпляр Popover в свойство элемента
+         parent._popover = popoverInstance;
+
+      }
+
+
    })
 
 }
