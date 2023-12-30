@@ -333,7 +333,8 @@ td.users__username {
 }
 
 
-.auth2 {
+.form {
+   transition: box-shadow ease 0.4s;
    background: #141E30;
    /* fallback for old browsers */
    background: -webkit-linear-gradient(to right, #243B55, #141E30);
@@ -349,7 +350,7 @@ td.users__username {
    border: 1px solid #030a290e;
    border-radius: 12px;
 
-   .auth2__title {
+   .form__title {
       text-align: center;
       font-weight: 700;
       margin-bottom: 30px;
@@ -360,13 +361,14 @@ td.users__username {
       outline: none;
       width: 100%;
       padding: 0 9px;
+      color: $color_1;
    }
 
-   .auth2__inputGroup {
+   .form__inputGroup {
       margin-bottom: 20px;
    }
 
-   .auth2__inputCnt {
+   .form__inputCnt {
       position: relative;
       margin-bottom: 15px;
 
@@ -382,24 +384,49 @@ td.users__username {
    }
 
    .inputLogin {
-      @extend .auth2__inputCnt;
+      @extend .form__inputCnt;
    }
 
    .inputPassword {
-      @extend .auth2__inputCnt;
+      @extend .form__inputCnt;
+
+      &::placeholder {
+         font-size: 16px;
+         letter-spacing: 0;
+      }
+
+      font-size: 22px;
+      letter-spacing: 1.5px;
+
    }
 
-   .auth2__GoBtn {
+   .form__GoBtn {
       margin-bottom: 20px;
    }
 
-   .auth2__toReg {
-      .auth2__toReg-title {
+   .form__toReg {
+      .form__toReg-title {
          text-align: center;
       }
 
-      .auth2__toReg-btn {
+      .form__toReg-btn {
+         font-size: 16px;
          border: none;
+         color: #c8caca;
+
+         &:hover {
+            color: #141E30;
+         }
       }
    }
+}
+
+.backlight {
+   box-shadow: 0px 4px 8px 14px rgb(79, 165, 231);
+}
+
+.alert,
+.header,
+.alert-warning {
+   padding: 0.5rem 1rem;
 }
