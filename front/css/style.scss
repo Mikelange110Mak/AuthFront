@@ -343,7 +343,7 @@ td.users__username {
    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
    color: $color_1;
 
-   margin: 50px auto;
+   margin: 110px auto;
    padding: 30px 20px 10px 20px;
    max-width: 500px;
    max-height: 600px;
@@ -425,8 +425,22 @@ td.users__username {
    box-shadow: 0px 4px 8px 14px rgb(79, 165, 231);
 }
 
+.backlightError {
+   box-shadow: 0px 4px 8px 14px rgb(231, 79, 79);
+}
+
 .alert,
 .header,
 .alert-warning {
+   background-color: #7a0808;
+   color: $color_1;
+   position: absolute;
    padding: 0.5rem 1rem;
+   width: 100%;
+   border-color: #7a0808;
+   border-radius: 0;
+}
+
+.hide {
+   visibility: hidden;
 }
