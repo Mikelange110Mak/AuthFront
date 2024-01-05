@@ -56,7 +56,7 @@ const login = async () => {
       let errorStr = error.response.data.message
       let errorArr = error.response.data[0]
       console.log(errorStr || errorArr);
-      messageErrorFn(errorStr || errorArr)
+      headerMessageFn(errorStr || errorArr, 'backlightError', 400, error)
    }
 
 }
@@ -68,12 +68,24 @@ const registration = async () => {
    const data = fieldsData()
 
    try {
+
       const response = await axios.post(`${API_URL}registration`, data)
-      console.log(response);
+      console.log(response.data);
+
+      //  Сообщение об успешной регистрации
+      headerMessageFn(response.data, 'backlight', 2000)
+
+      //  Очистка инпутов
+      registerUsernameInput.value = ''
+      registerPasswordInput.value = ''
+
+      // Смена формы
+      changeForm(blockAuth, blockRegister)
+
    } catch (error) {
       let errorStr = error.response.data.message
       let errorArr = error.response.data[0]
-      messageErrorFn(errorStr || errorArr)
+      headerMessageFn(errorStr || errorArr, 'backlightError', 400, error)
    }
 
 }
@@ -117,20 +129,24 @@ const fieldsData = () => {
 }
 
 
-//  Сообщение об ошибке, если пользователь ввел хуйню
-const messageErrorFn = (errorMsg) => {
+//  Сообщение в header, если пользователь ввел хуйню - следует добавить параметр error
+const headerMessageFn = (msg, cssClass, time, error) => {
 
    const headerMessage = document.querySelector(".header")
-   headerMessage.textContent = errorMsg
+   headerMessage.textContent = msg
    headerMessage.classList.remove('hide')
 
+   if (!error) {
+      headerMessage.style.borderColor = '#297a2f'
+      headerMessage.style.backgroundColor = '#297a2f'
+   }
 
    setTimeout(() => {
       headerMessage.classList.add('hide')
    }, 1800);
 
    //  Визуал для юзера, подсветка формы
-   backlightFn('backlightError', 520)
+   backlightFn(`${cssClass}`, time)
 
 }
 
