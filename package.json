@@ -1,0 +1,20 @@
+{
+  "name": "tryauthfront",
+  "version": "1.0.0",
+  "description": "Frontend api for MakeAuth",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikelange110Mak/AuthFront.git"
+  },
+  "author": "Make",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mikelange110Mak/AuthFront/issues"
+  },
+  "homepage": "https://github.com/Mikelange110Mak/AuthFront#readme"
+}
