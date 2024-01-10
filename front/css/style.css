@@ -173,55 +173,6 @@ body input {
   color: red;
 }
 
-.account {
-  margin: 50px auto;
-  padding: 15px 20px;
-  max-width: 500px;
-  max-height: 600px;
-  border: 1px solid #333;
-  border-radius: 12px;
-}
-
-.account__body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.account__title {
-  text-align: center;
-  margin-bottom: 30px;
-  font-weight: 700;
-}
-
-.account__name {
-  margin-bottom: 10px;
-}
-
-.account__role {
-  margin-bottom: 30px;
-}
-
-.account__username {
-  font-weight: 500;
-}
-
-.account__user-roles {
-  font-weight: 500;
-}
-
-.account__exit {
-  padding: 10px 7px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
 .users {
   margin: 50px auto;
   max-width: 500px;
@@ -479,4 +430,54 @@ td.users__username > div > input:focus {
 
 .hide {
   visibility: hidden;
+}
+
+.navbar .navbar__container {
+  padding: .25rem .75rem;
+}
+
+.navbar p {
+  margin: 0;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  color: aliceblue;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.navbar .navbar__account-btn {
+  font-size: 20px;
+  border: none;
+  outline: none;
+  background-color: inherit;
+}
+
+.navbar .navbar__account-btn:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.navbar li {
+  cursor: pointer;
+}
+
+.content {
+  margin: 30px 0;
+}
+
+.content .content__title {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.content .content__img-container {
+  max-width: 100%;
+  height: auto;
+}
+
+.content .content__img-container img {
+  max-height: 600px;
 }

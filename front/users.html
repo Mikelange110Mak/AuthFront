@@ -4,9 +4,18 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+
+
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+
+
+   <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+
+
+
    <link rel="stylesheet" href="./css/style.css">
    <script type="module" src="./js//users.js" defer></script>
    <title>Page1</title>
@@ -14,25 +23,36 @@
 
 <body>
    <div class="wrapper">
-      <nav class="navbar navbar-light bg-light">
-         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Личный кабинет</span>
-            <div class="account__info">
-               <span class="account__user-roles">user</span>
-               <button type="button" class="btn btn-outline-dark">Выйти</button>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+         <div class="navbar__container container-fluid">
+            <p class="navbar__title">Личный кабинет</p>
+            <div class="navbar__dropdown dropdown">
+               <button class="navbar__account-btn btn btn-secondary dropdown-toggle" id="dropdownMenuButton2"
+                  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  username
+               </button>
+               <ul class="navbar__account-list dropdown-menu dropdown-menu-dark dropdown-menu-end"
+                  aria-labelledby="dropdownMenuButton2">
+                  <li class="navbar__account-role dropdown-item"></li>
+                  <li>
+                     <hr class="dropdown-divider">
+                  </li>
+                  <li class="navbar__account-exit dropdown-item">Выйти</li>
+               </ul>
             </div>
-
          </div>
       </nav>
-      <div class="account">
-         <div class="account__body">
-            <div class="account__title">Личный кабинет</div>
-            <div class="account__name">Вы вошли как: <span class="account__username">alex</span></div>
-            <div class="account__role">Роли: <span class="account__user-roles">user</span></div>
-            <button class="account__exit">Выйти из аккаунта</button>
+      <div class="content">
+         <h3 class="content__title">Контентная часть</h3>
+         <div class="content__img-container d-flex justify-content-center">
+            <img class="content__pic img-fluid" src="/front/img/cat.jpg" alt="content-image">
          </div>
+
       </div>
+
    </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </html>

@@ -152,50 +152,6 @@ body {
    color: $color_3;
 }
 
-.account {
-   margin: 50px auto;
-   padding: 15px 20px;
-   max-width: 500px;
-   max-height: 600px;
-   border: 1px solid #333;
-   border-radius: 12px;
-}
-
-.account__body {
-   display: flex;
-   flex-direction: column;
-}
-
-.account__title {
-   text-align: center;
-   margin-bottom: 30px;
-   font-weight: 700;
-}
-
-.account__name {
-   margin-bottom: 10px;
-}
-
-.account__role {
-   margin-bottom: 30px;
-}
-
-.account__username {
-   font-weight: 500;
-}
-
-.account__user-roles {
-   font-weight: 500;
-}
-
-.account__exit {
-   padding: 10px 7px;
-   border-radius: 8px;
-   font-size: 16px;
-   font-weight: 500;
-   cursor: pointer;
-}
-
 .users {
    margin: 50px auto;
    max-width: 500px;
@@ -443,4 +399,54 @@ td.users__username {
 
 .hide {
    visibility: hidden;
+}
+
+.navbar {
+   .navbar__container {
+      padding: .25rem .75rem;
+   }
+
+   p {
+      margin: 0;
+      align-content: center;
+      color: $color_1;
+      font-weight: 700;
+      font-size: 20px;
+   }
+
+   .navbar__account-btn {
+      font-size: 20px;
+      border: none;
+      outline: none;
+      background-color: inherit;
+
+      &:focus {
+         outline: none;
+         box-shadow: none;
+      }
+   }
+
+   li {
+      cursor: pointer;
+   }
+}
+
+.content {
+   margin: 30px 0;
+
+   .content__title {
+      font-size: 22px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 30px;
+   }
+
+   .content__img-container {
+      max-width: 100%;
+      height: auto;
+
+      img {
+         max-height: 600px;
+      }
+   }
 }
